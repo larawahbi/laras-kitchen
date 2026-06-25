@@ -26,6 +26,7 @@ function CookMode({ recipe, onClose }) {
       }, 1000);
     }
     return () => clearInterval(timerRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timerRunning]);
 
   if (!recipe) return null;
