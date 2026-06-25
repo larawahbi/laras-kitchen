@@ -1,2 +1,6 @@
-cd ~/laras-kitchen/backend
-pip3 freeze > requirements.txt
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+alembic
