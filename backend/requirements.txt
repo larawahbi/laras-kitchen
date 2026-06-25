@@ -1,0 +1,2 @@
+cd ~/laras-kitchen/backend
+pip3 freeze > requirements.txt
