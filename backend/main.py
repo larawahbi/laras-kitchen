@@ -10,7 +10,10 @@ app = FastAPI(title="Lara's Kitchen API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://helpful-eclair-c9ce27.netlify.app"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
