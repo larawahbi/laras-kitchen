@@ -5,6 +5,7 @@ import RecipeCard from './components/RecipeCard';
 import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
 import './styles/main.css';
+import API_URL from './config';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -16,7 +17,7 @@ function App() {
   const [lang, setLang] = useState('en');
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/recipes')
+    fetch(`${API_URL}/api/recipes`)
       .then(res => res.json())
       .then(data => {
         setRecipes(data.recipes);
