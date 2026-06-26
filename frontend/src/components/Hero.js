@@ -1,18 +1,22 @@
-function Hero({ totalRecipes }) {
+import t from '../translations';
+
+function Hero({ totalRecipes, lang }) {
+  const tr = t[lang];
+
   return (
     <section className="hero">
       <div className="hero-bg"></div>
       <div className="hero-content">
-        <span className="hero-eyebrow">A personal collection</span>
+        <span className="hero-eyebrow">{tr.hero_eyebrow}</span>
         <h1 className="hero-title">
-          Recipes from<br /><em>my kitchen</em>
+          {t.en.hero_title_line1}<br /><em>{t.en.hero_title_em}</em>
         </h1>
-        <p className="hero-sub">
-          Family recipes, favourites found along the way, and everything
-          in between — collected in one place.
-        </p>
+        <h1 className="hero-title-ar">
+          {t.ar.hero_title_line1}<br /><em>{t.ar.hero_title_em}</em>
+        </h1>
+        <p className="hero-sub">{tr.hero_sub}</p>
         <a href="#recipes" className="hero-cta">
-          Browse recipes
+          {tr.hero_cta}
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2.5"
             strokeLinecap="round" strokeLinejoin="round">
@@ -24,15 +28,15 @@ function Hero({ totalRecipes }) {
       <div className="hero-stats">
         <div className="hero-stat">
           <span className="hero-stat-num">{totalRecipes}</span>
-          <span className="hero-stat-label">Recipes</span>
+          <span className="hero-stat-label">{tr.hero_stat_recipes}</span>
         </div>
         <div className="hero-stat">
           <span className="hero-stat-num">4</span>
-          <span className="hero-stat-label">Cuisines</span>
+          <span className="hero-stat-label">{tr.hero_stat_cuisines}</span>
         </div>
         <div className="hero-stat">
           <span className="hero-stat-num">★★★★★</span>
-          <span className="hero-stat-label">All rated</span>
+          <span className="hero-stat-label">{tr.hero_stat_rated}</span>
         </div>
       </div>
     </section>

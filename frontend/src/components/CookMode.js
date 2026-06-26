@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import t from '../translations';
 
-function CookMode({ recipe, onClose }) {
+function CookMode({ recipe, onClose, lang }) {
   const [phase, setPhase] = useState('ingredients');
   const [stepIndex, setStepIndex] = useState(0);
   const [checkedIngredients, setCheckedIngredients] = useState({});
@@ -13,24 +14,23 @@ function CookMode({ recipe, onClose }) {
   }, []);
 
   useEffect(() => {
-    if (timerRunning && timerSeconds > 0) {
-      timerRef.current = setInterval(() => {
-        setTimerSeconds(s => {
-          if (s <= 1) {
-            clearInterval(timerRef.current);
-            setTimerRunning(false);
-            return 0;
-          }
-          return s - 1;
-        });
-      }, 1000);
-    }
+    if (!timerRunning) return;
+    timerRef.current = setInterval(() => {
+      setTimerSeconds(s => {
+        if (s <= 1) {
+          clearInterval(timerRef.current);
+          setTimerRunning(false);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
     return () => clearInterval(timerRef.current);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timerRunning]);
 
   if (!recipe) return null;
 
+  const tr = t[lang];
   const allIngredients = recipe.ingredients.flatMap(g => g.items);
   const totalSteps = recipe.steps.length;
   const progress = phase === 'ingredients' ? 0
@@ -90,7 +90,7 @@ function CookMode({ recipe, onClose }) {
             <line x1="19" y1="12" x2="5" y2="12"/>
             <polyline points="12 19 5 12 12 5"/>
           </svg>
-          Back
+          {tr.cook_back}
         </button>
         <div className="cook-progress-bar-wrap">
           <div
@@ -99,22 +99,18 @@ function CookMode({ recipe, onClose }) {
           />
         </div>
         <span className="cook-progress-text">
-          {phase === 'ingredients' ? 'Ingredients'
-            : phase === 'done' ? 'Done!'
-            : `${stepIndex + 1} / ${totalSteps}`}
+          {phase === 'ingredients' ? tr.cook_progress_ingredients
+            : phase === 'done' ? tr.cook_progress_done
+            : tr.cook_step_of(stepIndex + 1, totalSteps)}
         </span>
       </div>
 
       <div className="cook-body">
 
-        {/* PHASE 1 — INGREDIENTS */}
         {phase === 'ingredients' && (
           <>
-            <div className="cook-phase-title">Gather your ingredients</div>
-            <p className="cook-phase-subtitle">
-              Check off each ingredient as you gather it.
-              When you're ready, move on to the steps.
-            </p>
+            <div className="cook-phase-title">{tr.cook_gather_title}</div>
+            <p className="cook-phase-subtitle">{tr.cook_gather_sub}</p>
             {allIngredients.map((item, i) => (
               <div
                 key={i}
@@ -141,17 +137,16 @@ function CookMode({ recipe, onClose }) {
                 className="cook-nav-btn next"
                 onClick={() => setPhase('steps')}
               >
-                Start cooking →
+                {tr.cook_start_btn}
               </button>
             </div>
           </>
         )}
 
-        {/* PHASE 2 — STEPS */}
         {phase === 'steps' && (
           <>
             <div className="cook-step-num">
-              Step {stepIndex + 1} of {totalSteps}
+              {tr.cook_step_of(stepIndex + 1, totalSteps)}
             </div>
             <div className="cook-step-card">
               <div className="cook-step-title">
@@ -167,10 +162,10 @@ function CookMode({ recipe, onClose }) {
                     <div className="timer-display">
                       {timerSeconds !== null
                         ? formatTimer(timerSeconds)
-                        : `${String(recipe.steps[stepIndex].wait_mins).padStart(2,'0')}:00`}
+                        : `${String(recipe.steps[stepIndex].wait_mins).padStart(2, '0')}:00`}
                     </div>
                     <div className="timer-label">
-                      {recipe.steps[stepIndex].wait_mins} min
+                      {recipe.steps[stepIndex].wait_mins} {tr.cook_timer_min}
                     </div>
                   </div>
                   {!timerRunning ? (
@@ -178,11 +173,11 @@ function CookMode({ recipe, onClose }) {
                       className="timer-btn"
                       onClick={() => startTimer(recipe.steps[stepIndex].wait_mins)}
                     >
-                      Start timer
+                      {tr.cook_timer_start}
                     </button>
                   ) : (
                     <button className="timer-btn active" onClick={stopTimer}>
-                      Stop
+                      {tr.cook_timer_stop}
                     </button>
                   )}
                 </div>
@@ -191,28 +186,25 @@ function CookMode({ recipe, onClose }) {
 
             <div className="cook-nav">
               <button className="cook-nav-btn prev" onClick={prevStep}>
-                ← Previous
+                {tr.cook_prev}
               </button>
               <button
                 className={`cook-nav-btn ${stepIndex + 1 >= totalSteps ? 'done' : 'next'}`}
                 onClick={nextStep}
               >
-                {stepIndex + 1 >= totalSteps ? '✓ All done' : 'Next step →'}
+                {stepIndex + 1 >= totalSteps ? tr.cook_all_done : tr.cook_next}
               </button>
             </div>
           </>
         )}
 
-        {/* PHASE 3 — DONE */}
         {phase === 'done' && (
           <div className="cook-done">
             <div className="cook-done-icon">🍽️</div>
-            <div className="cook-done-title">Bon appétit!</div>
-            <p className="cook-done-sub">
-              Your dish is ready. Enjoy every bite.
-            </p>
+            <div className="cook-done-title">{tr.cook_done_title}</div>
+            <p className="cook-done-sub">{tr.cook_done_sub}</p>
             <button className="cook-done-btn" onClick={onClose}>
-              Back to recipes
+              {tr.cook_done_btn}
             </button>
           </div>
         )}

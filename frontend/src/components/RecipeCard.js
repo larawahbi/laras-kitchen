@@ -1,4 +1,6 @@
-function RecipeCard({ recipe, onClick }) {
+function RecipeCard({ recipe, onClick, lang }) {
+  const name = lang === 'ar' && recipe.name_ar ? recipe.name_ar : recipe.name;
+
   return (
     <article className="recipe-card" onClick={() => onClick(recipe)}>
       <div className="card-img-wrap">
@@ -8,7 +10,7 @@ function RecipeCard({ recipe, onClick }) {
       </div>
       <div className="card-body">
         <div className="card-meal-type">{recipe.meal_type}</div>
-        <h3 className="card-title">{recipe.name}</h3>
+        <h3 className="card-title">{name}</h3>
         <div className="card-tags">
           {recipe.tags.map(tag => (
             <span key={tag} className="card-tag">{tag}</span>

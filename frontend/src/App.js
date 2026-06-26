@@ -4,6 +4,7 @@ import Filters from './components/Filters';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
+import t from './translations';
 import './styles/main.css';
 import API_URL from './config';
 
@@ -42,6 +43,8 @@ function App() {
     </div>
   );
 
+  const tr = t[lang];
+
   return (
     <div>
       <nav className="nav">
@@ -50,8 +53,8 @@ function App() {
           <span>مطبخ لارا</span>
         </div>
         <ul className="nav-links">
-          <li><a href="#recipes">Recipes</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#recipes">{tr.nav_recipes}</a></li>
+          <li><a href="#about">{tr.nav_about}</a></li>
         </ul>
         <div className="nav-right">
           <div className="lang-toggle">
@@ -71,7 +74,7 @@ function App() {
         </div>
       </nav>
 
-      <Hero totalRecipes={recipes.length} />
+      <Hero totalRecipes={recipes.length} lang={lang} />
 
       <section id="recipes" className="main">
         <Filters
@@ -80,12 +83,14 @@ function App() {
           cuisineFilter={cuisineFilter}
           onMealFilter={setMealFilter}
           onCuisineFilter={setCuisineFilter}
+          lang={lang}
         />
         <div className="recipe-grid">
           {filtered.map(recipe => (
             <RecipeCard
               key={recipe.id}
               recipe={recipe}
+              lang={lang}
               onClick={setSelected}
             />
           ))}
@@ -94,22 +99,20 @@ function App() {
 
       <section id="about" className="about-section">
         <div className="about-inner">
-          <div className="about-script">with love,</div>
-          <h2 className="about-title">About This Kitchen</h2>
-          <p className="about-text">
-            This is my personal recipe collection — dishes from family,
-            travels, and everything I've picked up along the way.
-          </p>
+          <div className="about-script">{tr.about_script}</div>
+          <h2 className="about-title">{tr.about_title}</h2>
+          <p className="about-text">{tr.about_text}</p>
         </div>
       </section>
 
       <footer className="footer">
         <span className="footer-logo">Lara's Kitchen</span>
-        <span>Made with 🌿 in Adelaide</span>
+        <span>{tr.footer_made}</span>
       </footer>
 
       <RecipeDetail
         recipe={selected}
+        lang={lang}
         onClose={() => setSelected(null)}
         onStartCooking={(recipe) => {
           setCooking(recipe);
@@ -119,6 +122,7 @@ function App() {
 
       <CookMode
         recipe={cooking}
+        lang={lang}
         onClose={() => setCooking(null)}
       />
     </div>

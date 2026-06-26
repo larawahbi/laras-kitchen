@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database import get_db, engine, Base
@@ -18,6 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+def _recipe_to_dict(r):
+    return {c.name: getattr(r, c.name) for c in r.__table__.columns}
+
+
 @app.get("/")
 def root():
     return {"message": "Lara's Kitchen API is running"}
@@ -25,11 +30,11 @@ def root():
 @app.get("/api/recipes")
 def get_recipes(db: Session = Depends(get_db)):
     recipes = db.query(Recipe).all()
-    return {"recipes": [r.__dict__ for r in recipes]}
+    return {"recipes": [_recipe_to_dict(r) for r in recipes]}
 
 @app.get("/api/recipes/{recipe_id}")
 def get_recipe(recipe_id: int, db: Session = Depends(get_db)):
     recipe = db.query(Recipe).filter(Recipe.id == recipe_id).first()
     if not recipe:
-        return {"error": "Recipe not found"}
-    return recipe.__dict__
+        raise HTTPException(status_code=404, detail="Recipe not found")
+    return _recipe_to_dict(recipe)
