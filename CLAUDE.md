@@ -25,6 +25,8 @@ A bilingual (Arabic/English) personal recipe website built by Lara Wahbi. It is 
 | Backend hosting | Railway |
 | Version control | GitHub |
 
+SQLAlchemy 2.x is in use. All raw SQL executed via engine.connect() must be wrapped in sqlalchemy.text().
+
 ---
 
 ## Language and Localisation
@@ -128,9 +130,8 @@ Editorial, warm, high-end food publication feel. Think Ottolenghi cookbook meets
 ## Known Issues to Fix
 
 - Recipe photos do not match their recipes — some photos are not displaying at all
-- Arabic translation is incomplete — not all components have been wired to the lang toggle
-- Recipe content (ingredients, instructions) is English only and should stay that way for now
-
+- Arabic translation is incomplete — not all components have been wired to the lang toggle  
+- Recipe content (ingredients and steps) should be bilingual. Arabic versions are stored in ingredients_ar and steps_ar columns in the database. When lang === 'ar', components should use these fields and fall back to English if null.
 ---
 
 ## Planned Next Steps (in order)

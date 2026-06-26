@@ -26,7 +26,7 @@ function Filters({ recipes, mealFilter, cuisineFilter, onMealFilter, onCuisineFi
             className={`filter-chip ${mealFilter === meal ? 'active' : ''}`}
             onClick={() => onMealFilter(mealFilter === meal ? 'all' : meal)}
           >
-            {meal}
+            {lang === 'ar' ? (tr.meal_type_labels?.[meal] || meal) : meal}
           </button>
         ))}
       </div>
@@ -45,7 +45,7 @@ function Filters({ recipes, mealFilter, cuisineFilter, onMealFilter, onCuisineFi
             className={`filter-chip ${cuisineFilter === cuisine ? 'active' : ''}`}
             onClick={() => onCuisineFilter(cuisineFilter === cuisine ? 'all' : cuisine)}
           >
-            {cuisine}
+            {lang === 'ar' ? (tr.cuisine_labels?.[cuisine] || cuisine) : cuisine}
           </button>
         ))}
       </div>

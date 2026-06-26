@@ -5,6 +5,10 @@ function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
 
   const tr = t[lang];
   const name = lang === 'ar' && recipe.name_ar ? recipe.name_ar : recipe.name;
+  const ingredients = (lang === 'ar' && recipe.ingredients_ar?.length) ? recipe.ingredients_ar : recipe.ingredients;
+  const steps = (lang === 'ar' && recipe.steps_ar?.length) ? recipe.steps_ar : recipe.steps;
+  const displayCuisine = lang === 'ar' ? (tr.cuisine_labels?.[recipe.cuisine] || recipe.cuisine) : recipe.cuisine;
+  const displayMealType = lang === 'ar' ? (tr.meal_type_labels?.[recipe.meal_type] || recipe.meal_type) : recipe.meal_type;
 
   return (
     <div className="recipe-overlay open">
@@ -48,22 +52,22 @@ function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
         )}
 
         <div className="recipe-cuisine-label">
-          {recipe.cuisine} · {recipe.meal_type}
+          {displayCuisine} · {displayMealType}
         </div>
         <h1 className="recipe-title">{name}</h1>
         <p className="recipe-desc">{recipe.desc}</p>
 
         <div className="recipe-stats">
           <div className="recipe-stat">
-            <span className="stat-value">{recipe.prep_time}m</span>
+            <span className="stat-value">{recipe.prep_time}{tr.time_min}</span>
             <span className="stat-label">{tr.prep}</span>
           </div>
           <div className="recipe-stat">
-            <span className="stat-value">{recipe.cook_time}m</span>
+            <span className="stat-value">{recipe.cook_time}{tr.time_min}</span>
             <span className="stat-label">{tr.cook}</span>
           </div>
           <div className="recipe-stat">
-            <span className="stat-value">{recipe.total_time}m</span>
+            <span className="stat-value">{recipe.total_time}{tr.time_min}</span>
             <span className="stat-label">{tr.total}</span>
           </div>
           <div className="recipe-stat">
@@ -79,7 +83,7 @@ function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
         <div className="recipe-layout">
           <div className="ingredient-box">
             <h3>{tr.ingredients}</h3>
-            {recipe.ingredients.map((group, i) => (
+            {ingredients.map((group, i) => (
               <div key={i} className="ingredient-group">
                 {group.group && (
                   <div className="ingredient-group-title">{group.group}</div>
@@ -96,7 +100,7 @@ function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
 
           <div className="steps-section">
             <h3>{tr.method}</h3>
-            {recipe.steps.map((step, i) => (
+            {steps.map((step, i) => (
               <div key={i} className="step">
                 <div className="step-number">{i + 1}</div>
                 <div className="step-body">

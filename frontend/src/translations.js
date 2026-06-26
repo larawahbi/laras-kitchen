@@ -47,6 +47,8 @@ const t = {
     cook_done_sub: 'Your dish is ready. Enjoy every bite.',
     cook_done_btn: 'Back to recipes',
 
+    time_min: 'm',
+
     about_script: 'with love,',
     about_title: 'About This Kitchen',
     about_text: "This is my personal recipe collection — dishes from family, travels, and everything I've picked up along the way.",
@@ -100,6 +102,21 @@ const t = {
     cook_done_title: 'بالهناء والشفاء!',
     cook_done_sub: 'طبقك جاهز. استمتع بكل لقمة.',
     cook_done_btn: 'العودة للوصفات',
+
+    time_min: 'د',
+
+    cuisine_labels: {
+      'Italian': 'إيطالي',
+      'Middle Eastern': 'شرق أوسطي',
+      'Turkish': 'تركي',
+      'Other': 'أخرى',
+    },
+
+    meal_type_labels: {
+      'Dessert': 'حلويات',
+      'Dinner': 'عشاء',
+      'Side': 'طبق جانبي',
+    },
 
     about_script: 'مع الحب،',
     about_title: 'عن هذا المطبخ',

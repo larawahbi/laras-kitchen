@@ -27,3 +27,5 @@ class Recipe(Base):
     desc = Column(String)
     ingredients = Column(JSON)
     steps = Column(JSON)
+    ingredients_ar = Column(JSON)
+    steps_ar = Column(JSON)

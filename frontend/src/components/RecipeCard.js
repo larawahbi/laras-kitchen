@@ -1,15 +1,20 @@
+import t from '../translations';
+
 function RecipeCard({ recipe, onClick, lang }) {
+  const tr = t[lang];
   const name = lang === 'ar' && recipe.name_ar ? recipe.name_ar : recipe.name;
+  const displayCuisine = lang === 'ar' ? (tr.cuisine_labels?.[recipe.cuisine] || recipe.cuisine) : recipe.cuisine;
+  const displayMealType = lang === 'ar' ? (tr.meal_type_labels?.[recipe.meal_type] || recipe.meal_type) : recipe.meal_type;
 
   return (
     <article className="recipe-card" onClick={() => onClick(recipe)}>
       <div className="card-img-wrap">
         <img src={recipe.cover_img} alt={recipe.name} loading="lazy" />
-        <span className="card-cuisine-badge">{recipe.cuisine}</span>
+        <span className="card-cuisine-badge">{displayCuisine}</span>
         <span className="card-rating">{recipe.rating}</span>
       </div>
       <div className="card-body">
-        <div className="card-meal-type">{recipe.meal_type}</div>
+        <div className="card-meal-type">{displayMealType}</div>
         <h3 className="card-title">{name}</h3>
         <div className="card-tags">
           {recipe.tags.map(tag => (
@@ -17,9 +22,9 @@ function RecipeCard({ recipe, onClick, lang }) {
           ))}
         </div>
         <div className="card-meta">
-          <span className="card-meta-item">⏱ {recipe.total_time}m</span>
+          <span className="card-meta-item">⏱ {recipe.total_time}{tr.time_min}</span>
           <span className="card-meta-item">👤 {recipe.serves}</span>
-          <span className="card-meta-item">~{recipe.calories} kcal</span>
+          <span className="card-meta-item">~{recipe.calories} {tr.kcal}</span>
         </div>
       </div>
     </article>

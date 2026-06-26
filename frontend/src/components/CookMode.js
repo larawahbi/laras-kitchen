@@ -31,8 +31,10 @@ function CookMode({ recipe, onClose, lang }) {
   if (!recipe) return null;
 
   const tr = t[lang];
-  const allIngredients = recipe.ingredients.flatMap(g => g.items);
-  const totalSteps = recipe.steps.length;
+  const ingredients = (lang === 'ar' && recipe.ingredients_ar?.length) ? recipe.ingredients_ar : recipe.ingredients;
+  const steps = (lang === 'ar' && recipe.steps_ar?.length) ? recipe.steps_ar : recipe.steps;
+  const allIngredients = ingredients.flatMap(g => g.items);
+  const totalSteps = steps.length;
   const progress = phase === 'ingredients' ? 0
     : phase === 'done' ? 100
     : ((stepIndex + 1) / totalSteps) * 100;
@@ -150,28 +152,28 @@ function CookMode({ recipe, onClose, lang }) {
             </div>
             <div className="cook-step-card">
               <div className="cook-step-title">
-                {recipe.steps[stepIndex].title}
+                {steps[stepIndex].title}
               </div>
               <div className="cook-step-text">
-                {recipe.steps[stepIndex].text}
+                {steps[stepIndex].text}
               </div>
 
-              {recipe.steps[stepIndex].wait_mins > 0 && (
+              {steps[stepIndex].wait_mins > 0 && (
                 <div className="cook-timer">
                   <div>
                     <div className="timer-display">
                       {timerSeconds !== null
                         ? formatTimer(timerSeconds)
-                        : `${String(recipe.steps[stepIndex].wait_mins).padStart(2, '0')}:00`}
+                        : `${String(steps[stepIndex].wait_mins).padStart(2, '0')}:00`}
                     </div>
                     <div className="timer-label">
-                      {recipe.steps[stepIndex].wait_mins} {tr.cook_timer_min}
+                      {steps[stepIndex].wait_mins} {tr.cook_timer_min}
                     </div>
                   </div>
                   {!timerRunning ? (
                     <button
                       className="timer-btn"
-                      onClick={() => startTimer(recipe.steps[stepIndex].wait_mins)}
+                      onClick={() => startTimer(steps[stepIndex].wait_mins)}
                     >
                       {tr.cook_timer_start}
                     </button>
