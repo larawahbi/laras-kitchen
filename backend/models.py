@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, JSON
+from sqlalchemy import Column, Integer, String, Float, Boolean, JSON, DateTime, ForeignKey
 from database import Base
 
 class Recipe(Base):
@@ -29,3 +29,26 @@ class Recipe(Base):
     steps = Column(JSON)
     ingredients_ar = Column(JSON)
     steps_ar = Column(JSON)
+    price_total = Column(Float)
+    price_last_checked = Column(DateTime)
+
+
+class IngredientSearchTerm(Base):
+    __tablename__ = "ingredient_search_terms"
+
+    ingredient_name = Column(String, primary_key=True)
+    search_term = Column(String, nullable=False)
+
+
+class RecipeIngredientPrice(Base):
+    __tablename__ = "recipe_ingredient_prices"
+
+    id = Column(Integer, primary_key=True)
+    recipe_id = Column(Integer, ForeignKey("recipes.id"))
+    ingredient_name = Column(String)
+    woolworths_product_name = Column(String)
+    woolworths_brand = Column(String)
+    woolworths_weight = Column(String)
+    woolworths_price = Column(Float)
+    woolworths_url = Column(String)
+    fetched_at = Column(DateTime)
