@@ -2,7 +2,7 @@
 
 # Lara's Kitchen · مطبخ لارا
 
-**A bilingual Arabic and English recipe web app, built for a household that cooks across Adelaide and Amman.**
+**A digital cookbook with an editorial feel. Guided cooking, portion scaling, and real grocery costs, in Arabic and English.**
 
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
@@ -18,7 +18,7 @@
 
 ## What it is
 
-A personal cooking companion shared with family and friends, not a commercial product. The same recipe reads in English or in colloquial Levantine Arabic, the interface flips to a full right-to-left layout, and a guided Cook Mode walks you through each step with timers. Recipes also carry an indicative grocery cost so you know roughly what a dish will run before you shop.
+A digital cookbook for the recipes a household actually cooks, built to feel like a food publication rather than a side project. A guided Cook Mode walks you through each dish with timers. Every recipe carries an indicative grocery cost, so you know what a meal runs before you shop. And each one reads in both English and colloquial Levantine Arabic, with a full right-to-left layout.
 
 The build doubles as a portfolio piece. It is documented to a professional standard, from the business case through to a relational data model and a phased roadmap. That documentation lives in [`/docs`](./docs).
 
