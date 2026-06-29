@@ -34,13 +34,14 @@ Everyday recipes get scattered across WhatsApp threads, video links, and screens
   Until the files are added, these will show as broken images, so add them before going public.
 -->
 
-| English | Arabic (RTL) |
+| English | Arabic (RTL) | 
 |---|---|
-| ![English view](./screenshots/english-view.png) | ![Arabic RTL view](./screenshots/arabic-rtl.png) |
+| ![English view](./screenshots/english-view.png) | ![Arabic RTL view](./screenshots/arabic-view.png) |
+| ![English Recipe](./screenshots/english-view-recipe.png) | ![Arabic Recipe](./screenshots/arabic-view-recipe.png) |
 
-| Cook Mode | Grocery cost panel |
+| Cook Mode | Recipes View |
 |---|---|
-| ![Cook Mode](./screenshots/cook-mode.png) | ![Cost panel](./screenshots/cost-panel.png) |
+| ![Cook Mode](./screenshots/english-view-cook-mode.png) | ![Recipe View](./screenshots/english-view-grid.png) |
 
 ## Features
 
