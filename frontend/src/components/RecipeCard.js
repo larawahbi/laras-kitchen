@@ -26,6 +26,11 @@ function RecipeCard({ recipe, onClick, lang }) {
           <span className="card-meta-item">👤 {recipe.serves}</span>
           <span className="card-meta-item">~{recipe.calories} {tr.kcal}</span>
         </div>
+        {recipe.price_total != null && (
+          <div className="card-price-line">
+            {tr.price_est_cost}: ${recipe.price_total.toFixed(2)}
+          </div>
+        )}
       </div>
     </article>
   );

@@ -94,7 +94,11 @@ def fetch_recipe_prices(recipe, db, force=False) -> float:
 
     recipe.price_total = round(total, 2)
     recipe.price_last_checked = datetime.utcnow()
-    db.commit()
+    try:
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise
 
     print(f"  Total: ${total:.2f}")
     return total
@@ -107,7 +111,10 @@ def run(force=False):
         print(f"Processing {len(recipes)} recipes...\n")
         for recipe in recipes:
             print(f"[{recipe.id}] {recipe.name}")
-            fetch_recipe_prices(recipe, db, force=force)
+            try:
+                fetch_recipe_prices(recipe, db, force=force)
+            except Exception as e:
+                print(f"  Error: {e}")
             print()
     finally:
         db.close()

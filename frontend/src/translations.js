@@ -53,6 +53,14 @@ const t = {
     about_title: 'About This Kitchen',
     about_text: "This is my personal recipe collection — dishes from family, travels, and everything I've picked up along the way.",
 
+    price_est_cost: 'Est. Cost',
+    price_pantry: 'From your kitchen',
+    price_shop: 'Shop →',
+    price_grocery_estimate: 'Grocery Estimate',
+    price_total_est: 'Estimated Total',
+    price_last_checked: 'Prices last checked',
+    price_no_data: 'Price estimate unavailable',
+
     footer_made: 'Made with 🌿 in Adelaide',
   },
   ar: {
@@ -121,6 +129,14 @@ const t = {
     about_script: 'مع الحب،',
     about_title: 'عن هذا المطبخ',
     about_text: 'هذه مجموعة وصفاتي الشخصية — أطباق من العائلة والسفر وكل ما تعلمته على الطريق.',
+
+    price_est_cost: 'التكلفة التقريبية',
+    price_pantry: 'من مطبخك',
+    price_shop: 'إلى التسوق',
+    price_grocery_estimate: 'تقدير تكلفة المشتريات',
+    price_total_est: 'المجموع التقريبي',
+    price_last_checked: 'آخر تحديث للأسعار',
+    price_no_data: 'التكلفة غير متوفرة',
 
     footer_made: 'صُنع بـ 🌿 في أديلايد',
   },

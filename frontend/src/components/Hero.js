@@ -12,7 +12,7 @@ function Hero({ totalRecipes, lang }) {
           {t.en.hero_title_line1}<br /><em>{t.en.hero_title_em}</em>
         </h1>
         <h1 className="hero-title-ar">
-          {t.ar.hero_title_line1}<br /><em>{t.ar.hero_title_em}</em>
+          {t.ar.hero_title_line1} <em>{t.ar.hero_title_em}</em>
         </h1>
         <p className="hero-sub">{tr.hero_sub}</p>
         <a href="#recipes" className="hero-cta">
