@@ -31,6 +31,7 @@ class Recipe(Base):
     steps_ar = Column(JSON)
     price_total = Column(Float)
     price_last_checked = Column(DateTime)
+    desc_ar = Column(String)
 
 
 class IngredientSearchTerm(Base):

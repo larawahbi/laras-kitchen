@@ -31,6 +31,7 @@ function RecipeDetail({ recipe, lang }) {
 
   const tr = t[lang];
   const name = lang === 'ar' && recipe.name_ar ? recipe.name_ar : recipe.name;
+  const desc = lang === 'ar' && recipe.desc_ar ? recipe.desc_ar : recipe.desc;
   const ingredients = (lang === 'ar' && recipe.ingredients_ar?.length) ? recipe.ingredients_ar : recipe.ingredients;
   const steps = (lang === 'ar' && recipe.steps_ar?.length) ? recipe.steps_ar : recipe.steps;
   const displayCuisine = lang === 'ar' ? (tr.cuisine_labels?.[recipe.cuisine] || recipe.cuisine) : recipe.cuisine;
@@ -87,7 +88,7 @@ function RecipeDetail({ recipe, lang }) {
           {displayCuisine} · {displayMealType}
         </div>
         <h1 className="recipe-title">{name}</h1>
-        <p className="recipe-desc">{recipe.desc}</p>
+        <p className="recipe-desc">{desc}</p>
 
         <div className="recipe-stats">
           <div className="recipe-stat">

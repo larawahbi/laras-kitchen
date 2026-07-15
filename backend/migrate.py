@@ -8,6 +8,7 @@
 # Migration 5 — Added price_total and price_last_checked to recipes
 # Migration 6 — Created units and ingredients lookup tables; seeded units
 # Migration 7 — Created recipe_ingredients table; migrated from recipes.ingredients JSON
+# Migration 8 — Added desc_ar column to recipes
 
 
 from sqlalchemy import text
@@ -284,16 +285,22 @@ def migration_7():
               f"{total_ri_rows} recipe_ingredients rows across {len(rows)} recipes.")
 
 
+def migration_8():
+    with engine.connect() as conn:
+        conn.execute(text(
+            "ALTER TABLE recipes ADD COLUMN IF NOT EXISTS desc_ar TEXT"
+        ))
+        conn.commit()
+    print("Migration 8 complete: desc_ar column added to recipes.")
+
+
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1 and sys.argv[1] == '7':
+    arg = sys.argv[1] if len(sys.argv) > 1 else ''
+    if arg == '7':
         migration_7()
+    elif arg == '8':
+        migration_8()
     else:
         migration_6()
 
-
-from sqlalchemy import text
-with engine.connect() as conn:
-    conn.execute(text("ALTER TABLE recipes ADD COLUMN desc_ar TEXT"))
-    conn.commit()
-    

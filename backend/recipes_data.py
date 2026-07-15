@@ -20,7 +20,7 @@ RECIPES = [
     "is_side": True,
     "cover_img": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop&q=80",
     "desc": "A simple, forgiving dough famously known as the '10-minute dough.' It uses a clever two-stage shortcut—mixing a small portion of flour first to let the yeast activate rapidly, saving you from waiting hours for the entire batch to rise. Perfect for pizza, fatayer, and all kinds of savoury pastries.",
-    "desc_ar": "تُعرف بـ 'عجينة العشر دقائق'، وهي عجينة سهلة ومرنة تعتمد على طريقة الاختصار على مرحلتين؛ حيث نخلط جزءاً من الطحين في البداية لتنشيط الخميرة وتفاعلها بسرعة، بدلاف من إضافة كل المكونات معاً والانتظار لساعات حتى تتخمر العجينة بالكامل. ممتازة للبيتزا، الفطاير، وكل أنواع المعجنات.",
+    "desc_ar": "تُعرف بـعجينة العشر دقائق، وهي عجينة سهلة ومرنة تعتمد على طريقة الاختصار على مرحلتين؛ حيث نخلط جزءاً من الطحين في البداية لتنشيط الخميرة وتفاعلها بسرعة، بدلاً من إضافة كل المكونات معاً والانتظار لساعات حتى تتخمر العجينة بالكامل. ممتازة للبيتزا، الفطاير، وكل أنواع المعجنات.",
     "ingredients": [
         {
             "group": "First Mix (الخلطة الأولى)",
@@ -92,6 +92,7 @@ RECIPES = [
         "is_side": True,
         "cover_img": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=800&auto=format&fit=crop&q=80",
         "desc": "Creamy, garlicky mashed potatoes with parmesan and herbs infused into the cream.",
+        "desc_ar": "بطاطا مهروسة ناعمة وكريمية غنية بنكهة الثوم، مع جبنة البارميزان والأعشاب العطرية",
         "ingredients": [
             {
                 "group": "Mash",
@@ -133,6 +134,7 @@ RECIPES = [
         "is_side": False,
         "cover_img": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800&auto=format&fit=crop&q=80",
         "desc": "Classic Italian meatballs made tender with milk-soaked bread, simmered in a simple tomato sauce.",
+        "desc_ar": "كرات اللحم الإيطالية الكلاسيكية، وتكمن طراوتها في سر استخدام الخبز المنقوع بالحليب، والمطهوة ببطء في صلصة بندورة بسيطة وغنية.",
         "ingredients": [
             {
                 "group": "Meatballs",
@@ -186,6 +188,7 @@ RECIPES = [
         "is_side": False,
         "cover_img": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop&q=80",
         "desc": "Pan-seared salmon with a sticky honey garlic glaze. Quick enough for a weeknight, impressive enough for guests.",
+        "desc_ar": "السلمون مشوي في المقلاة مع صلصة العسل والثوم الدبقة والشهية. وصفة سريعة ومثالية لأيام الأسبوع المزدحمة، وفاخرة بما يكفي لتقديمها للضيوف.",
         "ingredients": [
             {
                 "group": "Salmon",
@@ -234,6 +237,7 @@ RECIPES = [
         "is_side": False,
         "cover_img": "https://images.unsplash.com/photo-1599629954294-16df3a18c23a?w=800&auto=format&fit=crop&q=80",
         "desc": "Roasted sweet peppers stuffed with spiced beef, rice, and tomato, finished with melted mozzarella.",
+        "desc_ar": "فليفلة مشوية ومحشية باللحم المفروم، والأرز، والبندورة",
         "ingredients": [
             {
                 "group": "Peppers",
