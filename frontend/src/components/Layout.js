@@ -52,6 +52,11 @@ function Layout({ lang, setLang, recipes }) {
             <span className="footer-wordmark-en">Lara's Kitchen</span>
             <span className="footer-wordmark-ar">مطبخ لارا</span>
           </div>
+          <nav className="footer-nav">
+            <Link to="/" className="footer-nav-link">{tr.nav_recipes}</Link>
+            <Link to="/about" className="footer-nav-link">{tr.nav_about}</Link>
+            <Link to="/contact" className="footer-nav-link">{tr.nav_contact}</Link>
+          </nav>
           <span className="footer-tagline">{tr.footer_made}</span>
         </div>
       </footer>

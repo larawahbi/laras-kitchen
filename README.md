@@ -53,7 +53,7 @@ These are live today:
 - A recipe detail page with prep and cook times, servings, and notes
 - Cook Mode: a step-by-step guided view with countdown timers on timed steps
 - Indicative grocery cost per recipe, with a per-ingredient breakdown and shop links, using Woolworths' public product search
-- 15 recipes seeded with both languages and price data
+- 14 recipes seeded with both languages and price data
 
 ## Tech stack
 
@@ -122,7 +122,7 @@ The core recipe and cooking experience is live. The next body of work is foundat
 
 | Phase | Focus | Status |
 |---|---|---|
-| Foundation | Relational ingredient data model, nutrition scaffolding, defect fixes, Arabic completion | Next |
+| Foundation | Relational ingredient data model, nutrition scaffolding, defect fixes, Arabic completion | In progress |
 | Phase 1 — Core MVP | Bilingual viewing, guided cooking, scaling, link cards | Mostly done |
 | Phase 2 — Owner Admin | Authenticated admin to add and edit bilingual recipes | Planned |
 | Phase 3 — Accounts & Social | Registration, profiles, saved recipes, reviews | Planned |

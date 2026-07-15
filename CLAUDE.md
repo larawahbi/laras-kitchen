@@ -31,25 +31,39 @@ A bilingual (Arabic/English) personal recipe website built by Lara Wahbi. Full-s
 
 ## Project Structure
 
+React Router (react-router-dom) is in use. Routing is handled in `App.js` with `BrowserRouter`, `Routes`, and `Route`. `Layout.js` holds the persistent nav and footer via `Outlet`. Per-recipe URLs take the form `/recipe/:id`.
+
 ```
 laras-kitchen/
 ├── CLAUDE.md
 ├── frontend/
 │   ├── public/
-│   │   └── index.html
+│   │   ├── index.html
+│   │   └── _redirects          # Netlify SPA fallback — rewrites all paths to index.html
 │   ├── src/
-│   │   ├── App.js              # Root component, routing, API calls
+│   │   ├── App.js              # Root component, React Router setup, API fetch, lang state
 │   │   ├── App.css
 │   │   ├── index.js
 │   │   ├── index.css
 │   │   ├── config.js           # API base URL
 │   │   ├── translations.js     # All UI strings in EN and AR — single source of truth
+│   │   ├── styles/
+│   │   │   └── main.css        # Main stylesheet — imported by App.js
+│   │   ├── assets/
+│   │   │   ├── logo.png        # Simple logo
+│   │   │   ├── logo.svg        # Simple logo (SVG)
+│   │   │   └── logo_detailed.png  # Detailed logo — used on About page
+│   │   ├── hooks/
+│   │   │   └── useInView.js    # Intersection observer hook for scroll-reveal animations
 │   │   └── components/
+│   │       ├── Layout.js       # Persistent nav, footer, Outlet — wraps all main routes
 │   │       ├── Hero.js
 │   │       ├── Filters.js
 │   │       ├── RecipeCard.js
 │   │       ├── RecipeDetail.js
-│   │       └── CookMode.js
+│   │       ├── CookMode.js
+│   │       ├── Loading.js      # Animated loading screen (SVG pot) — uses tr.loading
+│   │       └── About.js        # About page — structure wired, content is placeholder
 │   ├── package.json
 │   └── .env                    # REACT_APP_API_URL
 └── backend/
@@ -104,6 +118,7 @@ laras-kitchen/
 | steps_ar | JSON | Same structure as steps — Arabic title and text |
 | price_total | Float | AUD, excludes staples, set by fetch_prices.py |
 | price_last_checked | Timestamp | Set by fetch_prices.py |
+| desc_ar | Text | Arabic description — added in Migration 8; 5 of 14 recipes populated |
 
 ### `recipe_ingredient_prices` table
 | Column | Type | Notes |
@@ -124,6 +139,45 @@ laras-kitchen/
 | ingredient_name | String | Primary key — matches item name in ingredients JSON |
 | search_term | String | Clean term sent to Woolworths API |
 
+### `units` table
+| Column | Type | Notes |
+|---|---|---|
+| code | VARCHAR | Primary key (e.g. `tbsp`, `tsp`, `cup`, `g`, `kg`, `clove`, `pinch`, `to_taste`) |
+| name_en | VARCHAR | English display name |
+| name_ar | VARCHAR | Arabic display name |
+| unit_type | VARCHAR | `volume`, `weight`, `count`, or `informal` |
+| scalable | Boolean | False for `pinch` and `to_taste` |
+
+### `ingredients` table
+| Column | Type | Notes |
+|---|---|---|
+| id | Serial | Primary key |
+| name_en | VARCHAR | English name — unique per ingredient |
+| name_ar | VARCHAR | Arabic name (may be empty string if no AR translation was found) |
+| is_staple | Boolean | True if `is_staple()` matched — skipped in price fetching |
+| search_term | VARCHAR | Woolworths search term, seeded from `ingredient_search_terms` |
+| calories_per_100g | Float | Null — reserved for future nutrition work |
+| protein_per_100g | Float | Null — reserved |
+| carbs_per_100g | Float | Null — reserved |
+| fat_per_100g | Float | Null — reserved |
+| grams_per_cup | Float | Null — reserved |
+| grams_per_tbsp | Float | Null — reserved |
+| grams_per_unit | Float | Null — reserved |
+
+### `recipe_ingredients` table
+| Column | Type | Notes |
+|---|---|---|
+| id | Serial | Primary key |
+| recipe_id | Integer | FK to recipes.id |
+| group_name | VARCHAR | Optional group heading (e.g. "For the sauce") |
+| sort_order | Integer | Display order within the recipe |
+| quantity | Float | Parsed numeric quantity; null for `pinch` / `to_taste` |
+| unit_code | VARCHAR | FK to units.code; null if no unit |
+| ingredient_id | Integer | FK to ingredients.id |
+| note | VARCHAR | Freeform note (e.g. "medium", range string) |
+
+> **Design decision:** `units`, `ingredients`, and `recipe_ingredients` are intentionally queried via the `_RI_QUERY` raw SQL constant in `main.py` — no SQLAlchemy ORM models exist for these three tables. Amount formatting logic lives in `_format_amount_en` / `_format_amount_ar` in `main.py`. `recipes.ingredients` and `recipes.ingredients_ar` JSON columns are kept as fallback. Do not flag the missing ORM models as a gap.
+
 ---
 
 ## Migrations Applied
@@ -135,6 +189,9 @@ All migrations are applied against the live Railway PostgreSQL database. There i
 - **Migration 3** — Renamed `coles_*` columns to `woolworths_*` in `recipe_ingredient_prices`
 - **Migration 4** — Created `ingredient_search_terms` table
 - **Migration 5** — Added `price_total` and `price_last_checked` to `recipes`
+- **Migration 6** — Created `units` and `ingredients` tables; seeded standard units (tbsp, tsp, cup, g, kg, clove, pinch, to_taste)
+- **Migration 7** — Created `recipe_ingredients` table; migrated all ingredient rows out of `recipes.ingredients` JSON into relational form; created `recipes_backup` as a safety snapshot
+- **Migration 8** — Added `desc_ar` column to `recipes`
 
 ---
 
@@ -222,29 +279,36 @@ Editorial, warm, high-end food publication feel. Clean but not sterile. Card bor
 - Cook Mode with step-by-step instructions and timers
 - Arabic content pipeline — ingredients_ar and steps_ar in database
 - Woolworths price integration — fetch script, lookup table, API endpoints
-- Price and cost data populated in database for all 15 recipes
+- Price and cost data populated in database for all 14 recipes
 - Frontend price display — price line on recipe cards, price stat in detail page stat strip, grocery estimate panel with per-ingredient Woolworths product names, prices, and shop links
+- React Router — per-recipe URLs (`/recipe/:id`), persistent header via Layout.js, Netlify SPA routing via `public/_redirects`
+- Loading screen — animated SVG pot, uses `tr.loading` for bilingual text
+- Relational ingredient data model — `units`, `ingredients`, and `recipe_ingredients` tables; `recipes.ingredients` JSON kept as fallback
+- `desc_ar` column added to `recipes`; wired through API and frontend; 5 of 14 recipes populated
 
 ### Planned (in order)
-1. Fix recipe photos — match correct images, fix broken paths
-2. Serving size adjuster with dynamic ingredient scaling
-3. Shopping list with per-ingredient Woolworths links
-4. Admin panel v1 — recipe management and photo upload
-5. AI cooking assistant widget
-6. desc, my_notes, side_dishes in Arabic
-7. Tags in Arabic
-8. Staple ingredient proportional pricing
-9. Public launch polish
+1. Logo in the top banner
+2. Recipe photo strip at the bottom — reorderable, with a short intro to each recipe
+3. About page content
+4. Contact page content
+5. Fix recipe photos — match correct images, fix broken paths
+6. Serving size adjuster with dynamic ingredient scaling
+7. Shopping list with per-ingredient Woolworths links
+8. Admin panel v1 — recipe management and photo upload
+9. AI cooking assistant widget
+10. desc, my_notes, side_dishes in Arabic
+11. Tags in Arabic
+12. Staple ingredient proportional pricing
+13. Public launch polish
 
 ---
 
 ## Known Issues
 
 - Recipe photos do not all match their recipes — some broken
-- desc, my_notes, side_dishes have no Arabic equivalent yet
+- `desc_ar` is wired through model, API, and frontend, but only 5 of 14 recipes have Arabic descriptions; `my_notes` and `side_dishes` have no Arabic equivalent at all
 - Tags have no Arabic equivalent yet
 - Cuisine and meal type filter labels translated via lookup map in translations.js — verify all values are covered
-- `App.js` hardcodes `"Loading..."` (not in `translations.js`) — displays in English when `lang === 'ar'`
 - `Hero.js` bypasses the `tr.*` convention: renders both an EN and AR `<h1>` simultaneously and toggles visibility via `body.ar` CSS, instead of using `tr.hero_title_line1` / `tr.hero_title_em`
 - `main.css` contains CSS stubs for four unbuilt features: search overlay (`.search-overlay`), serving size adjuster (`.serving-adjuster`), shopping list modal (`.modal-overlay`, `.shopping-list-item`), and AI assistant widget (`.ai-fab`, `.ai-panel`)
 

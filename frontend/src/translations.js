@@ -2,11 +2,12 @@ const t = {
   en: {
     nav_recipes: 'Recipes',
     nav_about: 'About',
+    nav_contact: 'Contact',
 
     hero_eyebrow: 'A personal collection',
     hero_title_line1: 'Recipes from',
     hero_title_em: 'my kitchen',
-    hero_sub: 'Family recipes, favourites found along the way, and everything in between — collected in one place.',
+    hero_sub: 'Family recipes, favourites found along the way, and everything in between, collected in one place.',
     hero_cta: 'Browse recipes',
     hero_stat_recipes: 'Recipes',
     hero_stat_cuisines: 'Cuisines',
@@ -51,19 +52,33 @@ const t = {
 
     about_script: 'with love,',
     about_title: 'About This Kitchen',
-    about_text: "This website is a living diary of the dishes that shape my world. Here, you will find a blend of treasured family recipes from my mom and grandma, inspiration gathered from my travels, and ideas shared by friends. I love experimenting in the kitchen—whether I am putting my own creative twist on modern TikTok and YouTube trends or discovering new flavors. \n As a Palestinian-Jordanian woman, my journey has taken me from the Middle East to Spain and the UK. Last year, I got married and moved to Australia, embarking on a beautiful new chapter. Living abroad, cooking became my way of bringing the taste of home with me. This space is a celebration of that adventure: recreating comforting heritage dishes, eagerly experimenting with fresh local ingredients, and embracing global flavors to create something uniquely delicious.",
+    about_text: "This website is a living diary of the dishes that shape my world. Here, you will find a blend of treasured family recipes from my mom and grandma, inspiration gathered from my travels, and ideas shared by friends. I love experimenting in the kitchen, whether I am putting my own creative twist on modern TikTok and YouTube trends or discovering new flavors.\nAs a Palestinian-Jordanian woman, my journey has taken me from the Middle East to Spain and the UK. Last year, I got married and moved to Australia, embarking on a beautiful new chapter. Living abroad, cooking became my way of bringing the taste of home with me. This space is a celebration of that adventure: recreating comforting heritage dishes, eagerly experimenting with fresh local ingredients, and embracing global flavors to create something uniquely delicious.",
 
-    // PLACEHOLDER — replace with final teaser copy
-    about_teaser_text: 'A small collection of dishes from my kitchen — Palestinian, Jordanian, Italian, and everything I have picked up along the way.',
-    about_teaser_link: 'Read more',
+    about_how_title: 'How I Choose Recipes',
+    about_how_lead: "Every recipe that makes it onto this site has to pass a simple test: Does it bring joy, comfort, or a bit of adventure to the table? I don't cook to follow strict rules; I cook to tell stories and connect with people. My recipe selection is a naturally evolving mix of three things:",
+    about_how_card1_title: 'Heritage & Nostalgia',
+    about_how_card1_body: 'The soul-warming dishes I grew up eating, recreated to taste exactly like home, no matter how far away I am.',
+    about_how_card2_title: 'Curiosity & Trends',
+    about_how_card2_body: "I love the energy of the modern food scene. If a unique flavor combination is blowing up on TikTok or YouTube, you can bet I'm in the kitchen testing it out and adding my own twist.",
+    about_how_card3_title: 'Seasonal Inspiration',
+    about_how_card3_body: "Moving to Australia opened up a whole new world of fresh, local ingredients. I love wandering through local markets and letting whatever is in season dictate what's for dinner.",
+    about_how_close: 'If a dish makes me smile, reminds me of a memory, or makes my kitchen smell incredible, it earns a spot here.',
 
-    // PLACEHOLDER — replace with final section copy
-    about_how_title: 'How I choose recipes',
-    about_how_text: 'Placeholder — text about how recipes are chosen goes here.',
-    about_bilingual_title: 'Why Arabic and English',
-    about_bilingual_text: 'Placeholder — text about why the site is bilingual goes here.',
-    about_contact_title: 'Get in touch',
-    about_contact_text: 'Placeholder — contact information goes here.',
+    about_bilingual_title: 'Why Arabic and English?',
+    about_bilingual_lead: 'Language, just like food, is a bridge between worlds. Writing this blog in both Arabic and English is deeply personal to me for two reasons:',
+    about_bilingual_col1_title: 'Honoring My Roots',
+    about_bilingual_col1_body: 'Arabic is the language of my heritage, my family, and the foundational flavors of my childhood. Writing in Arabic keeps me tethered to my roots and allows me to share these recipes authentically with the community that shaped me.',
+    about_bilingual_col2_title: 'Connecting Across Borders',
+    about_bilingual_col2_body: 'English is the language of my global journey, from the Middle East to Spain, the UK, and now my new home in Australia. It allows me to share my culture and culinary experiments with friends and food lovers all over the world.',
+    about_bilingual_close: 'Food is a universal language, but by sharing it in both Arabic and English, I hope to make everyone feel welcome at my table, no matter where they are logging in from.',
+
+    about_contact_title: 'Get in Touch',
+    about_contact_lead: 'I would love to hear from you! Whether you have a question about a recipe, want to share a cooking tip, or just want to say Marhaban and welcome me to Australia, please feel free to reach out.',
+    about_contact_close: "Let's swap recipes, talk about flavors, and navigate this delicious journey together.",
+
+    about_cta_recipes: 'Browse Recipes',
+    about_cta_contact: 'Get in Touch',
+    about_bilingual_phrase_en: 'Pull up a chair.',
 
     price_est_cost: 'Est. Cost',
     price_pantry: 'From your kitchen',
@@ -80,6 +95,7 @@ const t = {
   ar: {
     nav_recipes: 'الوصفات',
     nav_about: 'عنّي',
+    nav_contact: 'تواصل',
 
     hero_eyebrow: 'مجموعة شخصية',
     hero_title_line1: 'وصفات من',
@@ -145,17 +161,30 @@ const t = {
     about_text: `هذا الموقع هو دفتر وصفاتي البسيط؛ بمثابة مذكرات طهي حيّة تجمع الأطباق التي تشكّل عالمي. ستجدون هنا مزيجاً من الوصفات العائلية المتوارثة والغالية على قلبي من أمي وجدتي، ووصفات تعلمتها خلال رحلاتي وسفري أو شاركني إياها أصدقائي.
 كفتاة فلسطينية أردنية، أخذتني رحلة الحياة من الوطن العربي لأعيش في إسبانيا والمملكة المتحدة، وفي العام الماضي تزوجت وانتقلت إلى أستراليا لأبدأ فصلاً جديداً من حياتي. ومع الغربة، أصبح الطهي طريقتي الخاصة لاستحضار دفء ونكهات "البيت" أينما كنت. هذه المساحة هي احتفاء بتلك المغامرة بين أطباق تراثية أُعيد ابتكارها بحنين، وتجارب مستوحاة من تيك توك ويوتيوب تتأرجح بين النجاح والفشل، أخلط كل هذه النكهات بما تتيحه لي المكونات المحلية، لأصنع أطباقاً جديدة عروقها تنبض بدفء البيت.`,
 
-    // PLACEHOLDER — replace with final teaser copy
-    about_teaser_text: 'مجموعة صغيرة من أطباق مطبخي — فلسطينية وأردنية وإيطالية وكل ما التقطته على طول الطريق.',
-    about_teaser_link: 'اقرأ المزيد',
+  about_how_title: 'كيف أختار الوصفات',
+about_how_lead: 'كل وصفة بتوصل لهون لازم تمرق من امتحان بسيط: بتفرّح؟ بتونّس？ بتضيف شي جديد عالطاولة？ أنا ما بطبخ حسب قواعد، بطبخ لأحكي حكاية.',
+about_how_card1_title: 'الأكل اللي كبرنا عليه',
+about_how_card1_body: 'الأكلات اللي ريحتها بتفكّرني بمطبخ ستّي. بحاول أرجّعها زي ما هي بالظبط، مهما بعدت المسافة. لما تزبط، بيصير البيت معك وين ما رحت.',
+about_how_card2_title: 'فضول وتجريب',
+about_how_card2_body: 'بحب أجرّب. إذا في تركيبة نكهات غريبة عم تلف على تيك توك، أكيد رح تلاقيني بالمطبخ عم جرّبها، وبضيف عليها لمستي.',
+about_how_card3_title: 'من السوق',
+about_how_card3_body: 'أستراليا فتحت قدامي عالم جديد من الخضرة والمكوّنات المحلية. بحب أتمشى بالسوق وأخلّي اللي بموسمه هو اللي يقرر شو عالعشا.',
+about_how_close: 'إذا الأكلة ضحّكتني، أو ذكّرتني بشي، أو عبّت البيت ريحة، بتستاهل مكان هون.',
 
-    // PLACEHOLDER — replace with final section copy
-    about_how_title: 'كيف أختار الوصفات',
-    about_how_text: 'نص مؤقت — يُستبدل بنص عن طريقة اختيار الوصفات.',
-    about_bilingual_title: 'لماذا العربية والإنجليزية؟',
-    about_bilingual_text: 'نص مؤقت — يُستبدل بنص عن سبب دعم اللغتين.',
-    about_contact_title: 'تواصلي',
-    about_contact_text: 'نص مؤقت — بيانات التواصل هنا.',
+about_bilingual_title: 'لماذا العربية والإنجليزية؟',
+about_bilingual_lead: 'اللغة متل الأكل، بتقرّب الناس من بعض.',
+about_bilingual_col1_title: 'لأنها لغتي',
+about_bilingual_col1_body: 'في أكلات ما بتنكتب إلا بالعربي. الوصفة اللي سمعتها من أمي بالعربي، إذا كتبتها بلغة تانية بيضيع منها شي. وأنا هون بكتب لناسي، مش بشرح لحدا.',
+about_bilingual_col2_title: 'ولأني مشيت بعيد',
+about_bilingual_col2_body: 'من عمّان لإسبانيا لبريطانيا، ولهلق أستراليا. بكل محطة في ناس صاروا أهل، وما بيعرفوا عربي. الإنجليزي بيخلّيني قدّملهم صحن من عنا.',
+about_bilingual_close: 'الأكل بيوصل بأي لغة. بس لما يكون باللغتين، بيصير في محل عالطاولة للكل.',
+
+about_contact_title: 'تواصلوا معي',
+about_contact_lead: 'يسعدني أسمع منكم. سؤال عن وصفة، أو سرّ من أسرار مطبخكم، أو بس مرحبا.',
+about_contact_close: 'تعوا نتبادل وصفات ونحكي عن نكهات. الطاولة بتوسع.',
+    about_cta_recipes: 'تصفح الوصفات',
+    about_cta_contact: 'تواصلوا معي',
+    about_bilingual_phrase_ar: 'قرّب.',
 
     price_est_cost: 'التكلفة التقريبية',
     price_pantry: 'من مطبخك',
