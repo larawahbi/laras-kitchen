@@ -1,52 +1,76 @@
 RECIPES = [
-    
     {
-        "id": 2,
-        "name": "Arabic Pizza Dough",
-        "name_ar": "عجينة البيتزا العربية",
-        "cuisine": "Middle Eastern",
-        "meal_type": "Side",
-        "prep_time": 15,
-        "cook_time": 10,
-        "total_time": 25,
-        "serves": 4,
-        "rating": "⭐⭐⭐⭐⭐",
-        "calories": 280,
-        "estimated_cost": 3.20,
-        "tags": ["vegetarian", "vegan"],
-        "side_dishes": None,
-        "my_notes": None,
-        "source_link": None,
-        "source_type": None,
-        "is_side": True,
-        "cover_img": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop&q=80",
-        "desc": "A simple, forgiving dough that works for pizza, fatayer, and all kinds of savoury pastries.",
-        "ingredients": [
-            {
-                "group": "First Mix",
-                "items": [
-                    {"amount": "2 cups", "name": "warm water"},
-                    {"amount": "2 tbsp", "name": "instant yeast"},
-                    {"amount": "2 tbsp", "name": "sugar"},
-                    {"amount": "2 cups", "name": "flour"},
-                    {"amount": "½ tbsp", "name": "salt"}
-                ]
-            },
-            {
-                "group": "Second Add",
-                "items": [
-                    {"amount": "2–3 cups", "name": "flour, added gradually"},
-                    {"amount": "½ cup", "name": "oil"}
-                ]
-            }
-        ],
-        "steps": [
-            {"title": "First mix", "text": "Combine warm water, instant yeast, sugar, 2 cups of flour, and salt in a large bowl. Mix — the dough will be wet and soggy at this stage, that's correct.", "wait_mins": 0},
-            {"title": "Rest", "text": "Cover the bowl and leave in a dry, cool place for 10 minutes.", "wait_mins": 10},
-            {"title": "Add flour and oil", "text": "Add ½ cup of oil and begin adding flour gradually until soft and workable but not sticky. Knead by hand about 5 minutes.", "wait_mins": 0},
-            {"title": "Use immediately", "text": "No second rise needed. The dough is ready to shape and use straight away.", "wait_mins": 0}
-        ]
-    },
+    "id": 2,
+    "name": "Arabic Pizza Dough",
+    "name_ar": "عجينة العشر دقائق (عجينة البيتزا العربية)",
+    "cuisine": "Middle Eastern",
+    "meal_type": "Side",
+    "prep_time": 15,
+    "cook_time": 10,
+    "total_time": 25,
+    "serves": 4,
+    "rating": "⭐⭐⭐⭐⭐",
+    "calories": 280,
+    "estimated_cost": 3.20,
+    "tags": ["vegetarian", "vegan"],
+    "side_dishes": None,
+    "my_notes": "Famously known as the 10-minute dough shortcut.",
+    "source_link": None,
+    "source_type": None,
+    "is_side": True,
+    "cover_img": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop&q=80",
+    "desc": "A simple, forgiving dough famously known as the '10-minute dough.' It uses a clever two-stage shortcut—mixing a small portion of flour first to let the yeast activate rapidly, saving you from waiting hours for the entire batch to rise. Perfect for pizza, fatayer, and all kinds of savoury pastries.",
+    "desc_ar": "تُعرف بـ 'عجينة العشر دقائق'، وهي عجينة سهلة ومرنة تعتمد على طريقة الاختصار على مرحلتين؛ حيث نخلط جزءاً من الطحين في البداية لتنشيط الخميرة وتفاعلها بسرعة، بدلاف من إضافة كل المكونات معاً والانتظار لساعات حتى تتخمر العجينة بالكامل. ممتازة للبيتزا، الفطاير، وكل أنواع المعجنات.",
+    "ingredients": [
+        {
+            "group": "First Mix (الخلطة الأولى)",
+            "items": [
+                {"amount": "2 cups", "name": "warm water"},
+                {"amount": "2 tbsp", "name": "instant yeast"},
+                {"amount": "2 tbsp", "name": "sugar"},
+                {"amount": "2 cups", "name": "flour"},
+                {"amount": "½ tbsp", "name": "salt"}
+            ]
+        },
+        {
+            "group": "Second Add (الإضافة الثانية)",
+            "items": [
+                {"amount": "2–3 cups", "name": "flour, added gradually"},
+                {"amount": "½ cup", "name": "oil"}
+            ]
+        }
+    ],
+    "steps": [
+        {
+            "title": "First mix",
+            "title_ar": "المرحلة الأولى (الخلط)",
+            "text": "Combine warm water, instant yeast, sugar, 2 cups of flour, and salt in a large bowl. Mix well. The dough will be wet and liquid at this stage, which is exactly what we want for the yeast to start reacting. Tip: Test the water with your finger or wrist first; it should feel pleasantly warm like a bath, but definitely shouldn't burn or sting, otherwise it will kill the yeast.",
+            "text_ar": "في وعاء كبير، نخلط الماء الدافئ، الخميرة الفورية، السكر، كوبين من الطحين، والملح. نخلط المكونات جيداً — ستكون العجينة سائلة ورطبة في هذه المرحلة، وهذا هو المطلوب تماماً لتبدأ الخميرة بالتفاعل. نصيحة: اختبر حرارة الماء بإصبعك أو معصمك؛ يجب أن تكون دافئة ومريحة ولا تلسع أو تحرق أبداً، عشان ما تموت الخميرة.",
+            "wait_mins": 0
+        },
+        {
+            "title": "Rest and activate",
+            "title_ar": "ترتاح العجينة",
+            "text": "Cover the bowl and leave it in a warm place for 10 minutes until bubbles or froth form on the surface, showing the yeast is active.",
+            "text_ar": "نغطي الوعاء ونتركه يرتاح في مكان دافئ لمدة 10 دقائق حتى تظهر فقاعات على السطح وتتفاعل الخميرة.",
+            "wait_mins": 10
+        },
+        {
+            "title": "Add flour and oil",
+            "title_ar": "إضافة الطحين والزيت",
+            "text": "Add ½ cup of oil and begin adding the remaining flour gradually until the dough becomes soft and workable but not sticky. Knead well by hand for about 5 minutes.",
+            "text_ar": "نضيف نصف كوب الزيت ونبدأ بإضافة الطحين المتبقي تدريجياً حتى نحصل على عجينة طرية وسهلة التشكيل دون أن تلتصق. نعجنها باليد بشكل جيد لمدة 5 دقائق تقريباً.",
+            "wait_mins": 0
+        },
+        {
+            "title": "Use immediately",
+            "title_ar": "الاستخدام المباشر",
+            "text": "No second rise needed. The shortcut is complete, and the dough is ready to shape and bake straight away.",
+            "text_ar": "لا داعي للتخمير مرة ثانية. ميزة هذا الاختصار أن العجينة جاهزة للتشكيل والخبز فوراً.",
+            "wait_mins": 0
+        }
+    ]
+},
     {
         "id": 3,
         "name": "Creamy Garlic Mashed Potatoes",

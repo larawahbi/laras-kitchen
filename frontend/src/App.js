@@ -4,6 +4,7 @@ import Filters from './components/Filters';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
+import Loading from './components/Loading';
 import t from './translations';
 import './styles/main.css';
 import API_URL from './config';
@@ -37,11 +38,7 @@ function App() {
     return mealOk && cuisineOk;
   });
 
-  if (loading) return (
-    <div style={{ padding: '40px', fontFamily: 'sans-serif' }}>
-      Loading...
-    </div>
-  );
+  if (loading) return <Loading lang={lang} />;
 
   const tr = t[lang];
 

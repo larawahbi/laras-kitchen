@@ -28,7 +28,7 @@ _FRAC_STR   = {0.5: '½', 0.25: '¼', 0.75: '¾', 2/3: '⅔', 1/3: '⅓'}
 _PLURAL_EN  = {'cup': 'cups', 'clove': 'cloves'}
 _NOTE_PLURAL = {'handful': 'handfuls', 'slice': 'slices', 'leaf': 'leaves'}
 _SIZE_AR    = {
-    'medium': 'متوسطة', 'large': 'كبير', 'head': '',
+    'medium': 'متوسطة', 'large': 'كبير', 'head': 'رأس', 'clove': 'فص',
     'handful': 'حفنة', 'slice': 'شريحة', 'leaf': 'ورقة',
 }
 

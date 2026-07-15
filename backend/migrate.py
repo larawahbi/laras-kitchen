@@ -290,3 +290,10 @@ if __name__ == "__main__":
         migration_7()
     else:
         migration_6()
+
+
+from sqlalchemy import text
+with engine.connect() as conn:
+    conn.execute(text("ALTER TABLE recipes ADD COLUMN desc_ar TEXT"))
+    conn.commit()
+    

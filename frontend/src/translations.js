@@ -51,8 +51,7 @@ const t = {
 
     about_script: 'with love,',
     about_title: 'About This Kitchen',
-    about_text: "This is my personal recipe collection — dishes from family, travels, and everything I've picked up along the way.",
-
+    about_text: "This website is a living diary of the dishes that shape my world. Here, you will find a blend of treasured family recipes from my mom and grandma, inspiration gathered from my travels, and ideas shared by friends. I love experimenting in the kitchen—whether I am putting my own creative twist on modern TikTok and YouTube trends or discovering new flavors. \n As a Palestinian-Jordanian woman, my journey has taken me from the Middle East to Spain and the UK. Last year, I got married and moved to Australia, embarking on a beautiful new chapter. Living abroad, cooking became my way of bringing the taste of home with me. This space is a celebration of that adventure: recreating comforting heritage dishes, eagerly experimenting with fresh local ingredients, and embracing global flavors to create something uniquely delicious.",
     price_est_cost: 'Est. Cost',
     price_pantry: 'From your kitchen',
     price_shop: 'Shop →',
@@ -62,6 +61,8 @@ const t = {
     price_no_data: 'Price estimate unavailable',
 
     footer_made: 'Made with 🌿 in Adelaide',
+
+    loading: 'Your recipe is on its way',
   },
   ar: {
     nav_recipes: 'الوصفات',
@@ -73,12 +74,12 @@ const t = {
     hero_sub: 'وصفات عائلية ومفضلات وجدتها على الطريق — جمعتها كلها في مكان واحد.',
     hero_cta: 'تصفح الوصفات',
     hero_stat_recipes: 'وصفة',
-    hero_stat_cuisines: 'مطبخ',
-    hero_stat_rated: 'مقيّمة',
+    hero_stat_cuisines: 'نكهات عالمية',
+    hero_stat_rated: 'تم تقييمها جميعاً',
 
     filters_title: 'كل الوصفات',
     filters_count: 'وصفة',
-    filters_by_meal: 'حسب الوجبة',
+    filters_by_meal: 'حسب نوع الوجبة',
     filters_by_cuisine: 'حسب المطبخ',
     filters_all: 'الكل',
 
@@ -86,9 +87,9 @@ const t = {
     start_cooking: '🍳 ابدأ الطبخ',
     prep: 'التحضير',
     cook: 'الطبخ',
-    total: 'المجموع',
-    serves: 'يكفي',
-    kcal: 'سعرة',
+    total: 'الوقت الإجمالي',
+    serves: 'أشخاص',
+    kcal: 'سعرة حرارية',
     ingredients: 'المقادير',
     method: 'طريقة التحضير',
     my_notes: 'ملاحظاتي',
@@ -97,13 +98,13 @@ const t = {
     cook_back: 'رجوع',
     cook_progress_ingredients: 'المقادير',
     cook_progress_done: 'انتهينا!',
-    cook_gather_title: 'جمّع مقاديرك',
-    cook_gather_sub: 'ضع إشارة على كل مقدار وأنت تجمعه. وعندما تكون مستعداً، انتقل للخطوات.',
+    cook_gather_title: 'جهّز المكونات',
+    cook_gather_sub:'لنبدأ أولاً بتجهيز المكونات؛ اضغط على كل مكون متوفر لديك لشطبه من القائمة، وعند الانتهاء اضغط على: إبدأ الطبخ.',
     cook_start_btn: 'ابدأ الطبخ',
     cook_step_of: (i, total) => `الخطوة ${i} من ${total}`,
     cook_prev: 'السابقة',
     cook_next: 'الخطوة التالية',
-    cook_all_done: '✓ اكتملنا',
+    cook_all_done: '✓ طبقك جاهز',
     cook_timer_min: 'دقيقة',
     cook_timer_start: 'ابدأ المؤقت',
     cook_timer_stop: 'إيقاف',
@@ -115,7 +116,7 @@ const t = {
 
     cuisine_labels: {
       'Italian': 'إيطالي',
-      'Middle Eastern': 'شرق أوسطي',
+      'Middle Eastern':'مطبخ عربي',
       'Turkish': 'تركي',
       'Other': 'أخرى',
     },
@@ -126,9 +127,12 @@ const t = {
       'Side': 'طبق جانبي',
     },
 
-    about_script: 'مع الحب،',
     about_title: 'عن هذا المطبخ',
-    about_text: 'هذه مجموعة وصفاتي الشخصية — أطباق من العائلة والسفر وكل ما تعلمته على الطريق.',
+    about_script: 'نكهات من حول العالم ،ووصفات من القلب.. بلمسات تشبهنا',
+    about_script: 'نكهات من حول العالم ،ووصفات من القلب.. بلمسات تشبهنا',
+about_text: `هذا الموقع هو دفتر وصفاتي البسيط؛ بمثابة مذكرات طهي حيّة تجمع الأطباق التي تشكّل عالمي. ستجدون هنا مزيجاً من الوصفات العائلية المتوارثة والغالية على قلبي من أمي وجدتي، ووصفات تعلمتها خلال رحلاتي وسفري أو شاركني إياها أصدقائي. 
+كفتاة فلسطينية أردنية، أخذتني رحلة الحياة من الوطن العربي لأعيش في إسبانيا والمملكة المتحدة، وفي العام الماضي تزوجت وانتقلت إلى أستراليا لأبدأ فصلاً جديداً من حياتي. ومع الغربة، أصبح الطهي طريقتي الخاصة لاستحضار دفء ونكهات "البيت" أينما كنت. هذه المساحة هي احتفاء بتلك المغامرة بين أطباق تراثية أُعيد ابتكارها بحنين، وتجارب مستوحاة من تيك توك ويوتيوب تتأرجح بين النجاح والفشل، أخلط كل هذه النكهات بما تتيحه لي المكونات المحلية، لأصنع أطباقاً جديدة عروقها تنبض بدفء البيت.`,
+
 
     price_est_cost: 'التكلفة التقريبية',
     price_pantry: 'من مطبخك',
@@ -139,6 +143,8 @@ const t = {
     price_no_data: 'التكلفة غير متوفرة',
 
     footer_made: 'صُنع بـ 🌿 في أديلايد',
+
+    loading: 'صبرك علينا',
   },
 };
 
