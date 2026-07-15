@@ -1,21 +1,91 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import Layout from './components/Layout';
 import Hero from './components/Hero';
 import Filters from './components/Filters';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
 import Loading from './components/Loading';
+import About from './components/About';
 import t from './translations';
 import './styles/main.css';
 import API_URL from './config';
 
+function HomePage({ recipes, lang }) {
+  const [mealFilter, setMealFilter] = useState('all');
+  const [cuisineFilter, setCuisineFilter] = useState('all');
+  const navigate = useNavigate();
+  const tr = t[lang];
+
+  const filtered = recipes.filter(r => {
+    const mealOk = mealFilter === 'all' || r.meal_type === mealFilter;
+    const cuisineOk = cuisineFilter === 'all' || r.cuisine === cuisineFilter;
+    return mealOk && cuisineOk;
+  });
+
+  return (
+    <div className="page-fade-in">
+      <Hero totalRecipes={recipes.length} lang={lang} />
+      <section id="recipes" className="main">
+        <Filters
+          recipes={recipes}
+          mealFilter={mealFilter}
+          cuisineFilter={cuisineFilter}
+          onMealFilter={setMealFilter}
+          onCuisineFilter={setCuisineFilter}
+          lang={lang}
+        />
+        <div className="recipe-grid">
+          {filtered.map((recipe, index) => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+              lang={lang}
+              index={index}
+              onClick={() => navigate(`/recipe/${recipe.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+      <section className="about-section">
+        <div className="about-inner">
+          <div className="about-script">{tr.about_script}</div>
+          <h2 className="about-title">{tr.about_title}</h2>
+          <p className="about-text">{tr.about_teaser_text}</p>
+          <Link to="/about" className="about-teaser-link">{tr.about_teaser_link} →</Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+function RecipeDetailPage({ recipes, lang }) {
+  const { id } = useParams();
+  const recipe = recipes.find(r => r.id === Number(id));
+  if (!recipe) return <Navigate to="/" replace />;
+  return <RecipeDetail recipe={recipe} lang={lang} />;
+}
+
+function CookModePage({ recipes, lang }) {
+  const { id } = useParams();
+  const recipe = recipes.find(r => r.id === Number(id));
+  if (!recipe) return <Navigate to="/" replace />;
+  return <CookMode recipe={recipe} lang={lang} />;
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState(null);
-  const [cooking, setCooking] = useState(null);
-  const [mealFilter, setMealFilter] = useState('all');
-  const [cuisineFilter, setCuisineFilter] = useState('all');
   const [lang, setLang] = useState('en');
 
   useEffect(() => {
@@ -32,97 +102,20 @@ function App() {
     document.body.classList.toggle('ar', lang === 'ar');
   }, [lang]);
 
-  const filtered = recipes.filter(r => {
-    const mealOk = mealFilter === 'all' || r.meal_type === mealFilter;
-    const cuisineOk = cuisineFilter === 'all' || r.cuisine === cuisineFilter;
-    return mealOk && cuisineOk;
-  });
-
   if (loading) return <Loading lang={lang} />;
 
-  const tr = t[lang];
-
   return (
-    <div>
-      <nav className="nav">
-        <div className="nav-logo">
-          Lara's Kitchen
-          <span>مطبخ لارا</span>
-        </div>
-        <ul className="nav-links">
-          <li><a href="#recipes">{tr.nav_recipes}</a></li>
-          <li><a href="#about">{tr.nav_about}</a></li>
-        </ul>
-        <div className="nav-right">
-          <div className="lang-toggle">
-            <button
-              className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-              onClick={() => setLang('en')}
-            >
-              EN
-            </button>
-            <button
-              className={`lang-btn ${lang === 'ar' ? 'active' : ''}`}
-              onClick={() => setLang('ar')}
-            >
-              ع
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <Hero totalRecipes={recipes.length} lang={lang} />
-
-      <section id="recipes" className="main">
-        <Filters
-          recipes={recipes}
-          mealFilter={mealFilter}
-          cuisineFilter={cuisineFilter}
-          onMealFilter={setMealFilter}
-          onCuisineFilter={setCuisineFilter}
-          lang={lang}
-        />
-        <div className="recipe-grid">
-          {filtered.map(recipe => (
-            <RecipeCard
-              key={recipe.id}
-              recipe={recipe}
-              lang={lang}
-              onClick={setSelected}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section id="about" className="about-section">
-        <div className="about-inner">
-          <div className="about-script">{tr.about_script}</div>
-          <h2 className="about-title">{tr.about_title}</h2>
-          <p className="about-text">{tr.about_text}</p>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <span className="footer-logo">Lara's Kitchen</span>
-        <span>{tr.footer_made}</span>
-      </footer>
-
-      <RecipeDetail
-        recipe={selected}
-        lang={lang}
-        onClose={() => setSelected(null)}
-        onStartCooking={(recipe) => {
-          setCooking(recipe);
-          setSelected(null);
-        }}
-      />
-
-      <CookMode
-        recipe={cooking}
-        lang={lang}
-        onClose={() => setCooking(null)}
-      />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<Layout lang={lang} setLang={setLang} recipes={recipes} />}>
+          <Route path="/" element={<HomePage recipes={recipes} lang={lang} />} />
+          <Route path="/about" element={<About lang={lang} />} />
+          <Route path="/recipe/:id" element={<RecipeDetailPage recipes={recipes} lang={lang} />} />
+        </Route>
+        <Route path="/recipe/:id/cook" element={<CookModePage recipes={recipes} lang={lang} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

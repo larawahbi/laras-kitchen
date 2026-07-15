@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import t from '../translations';
 
-function CookMode({ recipe, onClose, lang }) {
+function CookMode({ recipe, lang }) {
   const [phase, setPhase] = useState('ingredients');
   const [stepIndex, setStepIndex] = useState(0);
   const [checkedIngredients, setCheckedIngredients] = useState({});
   const [timerSeconds, setTimerSeconds] = useState(null);
   const [timerRunning, setTimerRunning] = useState(false);
   const timerRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => clearInterval(timerRef.current);
@@ -85,7 +87,7 @@ function CookMode({ recipe, onClose, lang }) {
   return (
     <div className="cook-overlay open">
       <div className="cook-top-bar">
-        <button className="cook-overlay-back" onClick={onClose}>
+        <button className="cook-overlay-back" onClick={() => navigate(`/recipe/${recipe.id}`)}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2.5"
             strokeLinecap="round" strokeLinejoin="round">
@@ -205,7 +207,7 @@ function CookMode({ recipe, onClose, lang }) {
             <div className="cook-done-icon">🍽️</div>
             <div className="cook-done-title">{tr.cook_done_title}</div>
             <p className="cook-done-sub">{tr.cook_done_sub}</p>
-            <button className="cook-done-btn" onClick={onClose}>
+            <button className="cook-done-btn" onClick={() => navigate(`/recipe/${recipe.id}`)}>
               {tr.cook_done_btn}
             </button>
           </div>

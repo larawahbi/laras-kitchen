@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import t from '../translations';
 import API_URL from '../config';
 
@@ -10,8 +11,9 @@ function formatPriceDate(dateStr, lang) {
   );
 }
 
-function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
+function RecipeDetail({ recipe, lang }) {
   const [priceData, setPriceData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!recipe) return;
@@ -41,15 +43,15 @@ function RecipeDetail({ recipe, onClose, onStartCooking, lang }) {
     : null;
 
   return (
-    <div className="recipe-overlay open">
+    <div className="recipe-page page-fade-in">
       <div className="recipe-back">
-        <button className="back-btn" onClick={onClose}>
+        <button className="back-btn" onClick={() => navigate('/')}>
           {tr.back}
         </button>
         <div className="recipe-actions">
           <button
             className="cook-mode-btn"
-            onClick={() => onStartCooking(recipe)}
+            onClick={() => navigate(`/recipe/${recipe.id}/cook`)}
           >
             {tr.start_cooking}
           </button>
