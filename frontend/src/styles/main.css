@@ -75,7 +75,7 @@ body.ar .side-dish-img-wrap{float:left;margin:0 32px 24px 0;}
 .hero-title{font-family:var(--font-display);font-size:clamp(2.6rem,6vw,4.8rem);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:20px;}
 .hero-title em{font-style:italic;color:#d4c9a8;}
 .hero-title-ar {
-  font-family: var(--font-font-title);
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 700;
   color: var(--white);
