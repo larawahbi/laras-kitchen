@@ -8,6 +8,7 @@ import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
 import Loading from './components/Loading';
 import About from './components/About';
+import Contact from './components/Contact';
 import t from './translations';
 import './styles/main.css';
 import API_URL from './config';
@@ -108,9 +109,10 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route element={<Layout lang={lang} setLang={setLang} recipes={recipes} />}>
+        <Route element={<Layout lang={lang} setLang={setLang} />}>
           <Route path="/" element={<HomePage recipes={recipes} lang={lang} />} />
           <Route path="/about" element={<About lang={lang} />} />
+          <Route path="/contact" element={<Contact lang={lang} />} />
           <Route path="/recipe/:id" element={<RecipeDetailPage recipes={recipes} lang={lang} />} />
         </Route>
         <Route path="/recipe/:id/cook" element={<CookModePage recipes={recipes} lang={lang} />} />

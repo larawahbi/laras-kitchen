@@ -34,10 +34,6 @@ function Hero({ totalRecipes, lang }) {
           <span className="hero-stat-num">4</span>
           <span className="hero-stat-label">{tr.hero_stat_cuisines}</span>
         </div>
-        <div className="hero-stat">
-          <span className="hero-stat-num">★★★★★</span>
-          <span className="hero-stat-label">{tr.hero_stat_rated}</span>
-        </div>
       </div>
     </section>
   );

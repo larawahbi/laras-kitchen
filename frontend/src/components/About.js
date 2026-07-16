@@ -9,7 +9,6 @@ function About({ lang }) {
   const [heroRef, heroInView] = useInView({ threshold: 0.1 });
   const [pillarsRef, pillarsInView] = useInView({ threshold: 0.15 });
   const [bilingualRef, bilingualInView] = useInView({ threshold: 0.15 });
-  const [contactRef, contactInView] = useInView({ threshold: 0.15 });
 
   return (
     <div className="about-page">
@@ -48,28 +47,49 @@ function About({ lang }) {
         <div className="about-section-inner">
           <h2 className="about-section-heading">{tr.about_how_title}</h2>
           <p className="about-pillars-lead">{tr.about_how_lead}</p>
-          <div className="about-pillars-list">
+          <div className="about-arches">
 
-            <div className="about-pillar-entry">
-              <span className="about-pillar-numeral">01</span>
-              <h3 className="about-pillar-title">{tr.about_how_card1_title}</h3>
-              <p className="about-pillar-body">{tr.about_how_card1_body}</p>
+            <div className="about-arch about-arch--1">
+              <div className="about-arch-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 21Q9 32 20 32Q31 32 31 21H9Z"/>
+                  <path d="M9 21H31"/>
+                  <path d="M9 21Q9 18 7 17Q5 17 5 20Q5 23 7 23"/>
+                  <path d="M31 21Q31 18 33 17Q35 17 35 20Q35 23 33 23"/>
+                  <path d="M16 19Q14 14 16 10"/>
+                  <path d="M20 19Q18 14 20 9"/>
+                  <path d="M24 19Q22 14 24 10"/>
+                </svg>
+              </div>
+              <h3 className="about-arch-title">{tr.about_how_card1_title}</h3>
+              <p className="about-arch-body">{tr.about_how_card1_body}</p>
             </div>
 
-            <hr className="about-pillar-rule" />
-
-            <div className="about-pillar-entry">
-              <span className="about-pillar-numeral">02</span>
-              <h3 className="about-pillar-title">{tr.about_how_card2_title}</h3>
-              <p className="about-pillar-body">{tr.about_how_card2_body}</p>
+            <div className="about-arch about-arch--2">
+              <div className="about-arch-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 36V22"/>
+                  <path d="M13 7V16Q13 22 20 22"/>
+                  <path d="M17 7V22"/>
+                  <path d="M23 7V22"/>
+                  <path d="M27 7V16Q27 22 20 22"/>
+                </svg>
+              </div>
+              <h3 className="about-arch-title">{tr.about_how_card2_title}</h3>
+              <p className="about-arch-body">{tr.about_how_card2_body}</p>
             </div>
 
-            <hr className="about-pillar-rule" />
-
-            <div className="about-pillar-entry">
-              <span className="about-pillar-numeral">03</span>
-              <h3 className="about-pillar-title">{tr.about_how_card3_title}</h3>
-              <p className="about-pillar-body">{tr.about_how_card3_body}</p>
+            <div className="about-arch about-arch--3">
+              <div className="about-arch-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 36V10"/>
+                  <path d="M20 28Q14 24 11 19Q16 18 20 24"/>
+                  <path d="M20 21Q26 17 29 12Q24 11 20 17"/>
+                  <path d="M20 14Q16 11 14 6Q18 5 20 11"/>
+                </svg>
+              </div>
+              <h3 className="about-arch-title">{tr.about_how_card3_title}</h3>
+              <p className="about-arch-body">{tr.about_how_card3_body}</p>
             </div>
 
           </div>
@@ -86,7 +106,7 @@ function About({ lang }) {
           <h2 className="about-section-heading">{tr.about_bilingual_title}</h2>
           <p className="about-bilingual-lead">{tr.about_bilingual_lead}</p>
           <div className="about-bilingual-phrases" aria-hidden="true">
-            <span className="about-bilingual-phrase-en">{tr.about_bilingual_phrase_en}</span>
+            <span className="about-bilingual-phrase-en" dir="ltr">{tr.about_bilingual_phrase_en}</span>
             <span className="about-bilingual-phrase-rule"></span>
             <span className="about-bilingual-phrase-ar">{tr.about_bilingual_phrase_ar}</span>
           </div>
@@ -104,17 +124,6 @@ function About({ lang }) {
         </div>
       </section>
 
-      {/* 4 — Get in Touch */}
-      <section
-        ref={contactRef}
-        className={`about-contact about-reveal${contactInView ? ' is-visible' : ''}`}
-      >
-        <div className="about-section-inner about-section-inner--center">
-          <h2 className="about-section-heading">{tr.about_contact_title}</h2>
-          <p className="about-contact-lead">{tr.about_contact_lead}</p>
-          <p className="about-contact-close">{tr.about_contact_close}</p>
-        </div>
-      </section>
 
     </div>
   );

@@ -26,7 +26,6 @@ function RecipeCard({ recipe, onClick, lang, index = 0 }) {
           onLoad={() => setImgLoaded(true)}
         />
         <span className="card-cuisine-badge">{displayCuisine}</span>
-        <span className="card-rating">{recipe.rating}</span>
       </div>
       <div className="card-body">
         <div className="card-meal-type">{displayMealType}</div>
