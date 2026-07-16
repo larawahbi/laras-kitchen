@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import t from '../translations';
-import API_URL from '../config';
+import API_URL, { SHOW_PRICES } from '../config';
 
 function formatPriceDate(dateStr, lang) {
   if (!dateStr) return null;
@@ -16,7 +16,7 @@ function RecipeDetail({ recipe, lang }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!recipe) return;
+    if (!recipe || !SHOW_PRICES) return;
     setPriceData(null);
     fetch(`${API_URL}/api/recipes/${recipe.id}/prices`)
       .then(res => {
@@ -111,7 +111,7 @@ function RecipeDetail({ recipe, lang }) {
             <span className="stat-value">~{recipe.calories}</span>
             <span className="stat-label">{tr.kcal}</span>
           </div>
-          {recipe.price_total != null && (
+          {SHOW_PRICES && recipe.price_total != null && (
             <div className="recipe-stat">
               <span className="stat-value stat-value--terra">${recipe.price_total.toFixed(2)}</span>
               <span className="stat-label">{tr.price_est_cost}</span>
@@ -151,7 +151,7 @@ function RecipeDetail({ recipe, lang }) {
           </div>
         </div>
 
-        {priceData && (
+        {SHOW_PRICES && priceData && (
           <div className="grocery-estimate">
             <h3 className="grocery-estimate-title">{tr.price_grocery_estimate}</h3>
             {allIngredientItems.map((item, i) => {

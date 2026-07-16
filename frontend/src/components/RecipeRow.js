@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import t from '../translations';
+import { SHOW_PRICES } from '../config';
 
 function RecipeRow({ recipe, lang }) {
   const tr = t[lang];
@@ -51,7 +52,7 @@ function RecipeRow({ recipe, lang }) {
               </svg>
               {recipe.serves}
             </span>
-            {recipe.price_total != null && (
+            {SHOW_PRICES && recipe.price_total != null && (
               <span className="recipe-row-meta-item recipe-row-cost">
                 ${recipe.price_total.toFixed(2)}
               </span>
