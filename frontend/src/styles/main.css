@@ -469,10 +469,6 @@ body.ar .contact-input{text-align:right;}
 
 .footer-strip{background:var(--bg);border-top:1px solid rgba(125,155,118,0.2);padding:12px clamp(20px,5vw,60px);display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:0.78rem;color:var(--text-mid);}
 
-body.ar .footer-light-bar{flex-direction:row-reverse;}
-body.ar .footer-nav{flex-direction:row-reverse;}
-body.ar .footer-strip{flex-direction:row-reverse;}
-
 .loading-screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);gap:24px;}
 .loading-phrase{font-family:var(--font-display);font-size:1.375rem;color:var(--text);}
 body.ar .loading-phrase{font-family:'Amiri',serif;}

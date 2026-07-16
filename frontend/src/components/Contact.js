@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import t from '../translations';
-import SocialIcons from './SocialIcons';
 import { useInView } from '../hooks/useInView';
 
 const EMPTY = { name: '', email: '', message: '', botField: '' };
@@ -61,9 +60,6 @@ function Contact({ lang }) {
         <div className="contact-success">
           <h2 className="contact-success-heading">{tr.contact_success_heading}</h2>
           <p className="contact-success-body">{tr.contact_success_body}</p>
-          <div className="footer-social">
-            <SocialIcons />
-          </div>
         </div>
       </div>
     );
@@ -159,10 +155,6 @@ function Contact({ lang }) {
             {status === 'submitting' ? tr.contact_submitting : tr.contact_submit}
           </button>
         </form>
-      </div>
-
-      <div className="contact-social">
-        <SocialIcons />
       </div>
 
     </div>
