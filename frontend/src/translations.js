@@ -51,6 +51,8 @@ const t = {
 
     about_script: 'with love,',
     about_title: 'About This Kitchen',
+    about_teaser_text: 'Family recipes, travel discoveries, and kitchen experiments — all collected in one place.',
+    about_teaser_link: 'Read my story',
     about_text: "This website is a living diary of the dishes that shape my world. Here, you will find a blend of treasured family recipes from my mom and grandma, inspiration gathered from my travels, and ideas shared by friends. I love experimenting in the kitchen, whether I am putting my own creative twist on modern TikTok and YouTube trends or discovering new flavours.\nAs a Palestinian-Jordanian woman, my journey has taken me from the Middle East to Spain and the UK. Last year, I got married and moved to Australia, embarking on a beautiful new chapter. Living abroad, cooking became my way of bringing the taste of home with me. This space is a celebration of that adventure: recreating comforting heritage dishes, eagerly experimenting with fresh local ingredients, and embracing global flavours to create something uniquely delicious.",
 
     about_how_title: 'How I Choose Recipes',
@@ -175,6 +177,8 @@ const t = {
     },
 
     about_title: 'عن هذا المطبخ',
+    about_teaser_text: 'TODO_AR',
+    about_teaser_link: 'اقرأ قصتي',
     about_script: 'نكهات من حول العالم ،ووصفات من القلب.. بلمسات تشبهنا',
     about_text: `هذا الموقع هو دفتر وصفاتي البسيط؛ بمثابة مذكرات طهي حيّة تجمع الأطباق التي تشكّل عالمي. ستجدون هنا مزيجاً من الوصفات العائلية المتوارثة والغالية على قلبي من أمي وجدتي، ووصفات تعلمتها خلال رحلاتي وسفري أو شاركني إياها أصدقائي.
 كفتاة فلسطينية أردنية، أخذتني رحلة الحياة من الوطن العربي لأعيش في إسبانيا والمملكة المتحدة، وفي العام الماضي تزوجت وانتقلت إلى أستراليا لأبدأ فصلاً جديداً من حياتي. ومع الغربة، أصبح الطهي طريقتي الخاصة لاستحضار دفء ونكهات "البيت" أينما كنت. هذه المساحة هي احتفاء بتلك المغامرة بين أطباق تراثية أُعيد ابتكارها بحنين، وتجارب مستوحاة من تيك توك ويوتيوب تتأرجح بين النجاح والفشل، أخلط كل هذه النكهات بما تتيحه لي المكونات المحلية، لأصنع أطباقاً جديدة عروقها تنبض بدفء البيت.`,

@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Link, useParams, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import Filters from './components/Filters';
-import RecipeCard from './components/RecipeCard';
+import RecipeRow from './components/RecipeRow';
 import RecipeDetail from './components/RecipeDetail';
 import CookMode from './components/CookMode';
 import Loading from './components/Loading';
 import About from './components/About';
 import Contact from './components/Contact';
 import t from './translations';
+import { useInView } from './hooks/useInView';
 import './styles/main.css';
 import API_URL from './config';
 
 function HomePage({ recipes, lang }) {
   const [mealFilter, setMealFilter] = useState('all');
   const [cuisineFilter, setCuisineFilter] = useState('all');
-  const navigate = useNavigate();
   const tr = t[lang];
+  const [teaserRef, teaserInView] = useInView({ threshold: 0.2 });
 
   const filtered = recipes.filter(r => {
     const mealOk = mealFilter === 'all' || r.meal_type === mealFilter;
@@ -37,24 +38,22 @@ function HomePage({ recipes, lang }) {
           onCuisineFilter={setCuisineFilter}
           lang={lang}
         />
-        <div className="recipe-grid">
-          {filtered.map((recipe, index) => (
-            <RecipeCard
+        <div className="recipe-list">
+          {filtered.map((recipe) => (
+            <RecipeRow
               key={recipe.id}
               recipe={recipe}
               lang={lang}
-              index={index}
-              onClick={() => navigate(`/recipe/${recipe.id}`)}
             />
           ))}
         </div>
       </section>
-      <section className="about-section">
+      <section ref={teaserRef} className={`about-section about-reveal${teaserInView ? ' is-visible' : ''}`}>
         <div className="about-inner">
           <div className="about-script">{tr.about_script}</div>
           <h2 className="about-title">{tr.about_title}</h2>
           <p className="about-text">{tr.about_teaser_text}</p>
-          <Link to="/about" className="about-teaser-link">{tr.about_teaser_link} →</Link>
+          <Link to="/about" className="about-teaser-link">{tr.about_teaser_link}</Link>
         </div>
       </section>
     </div>

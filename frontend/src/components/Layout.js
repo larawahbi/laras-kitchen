@@ -1,10 +1,11 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import t from '../translations';
 import { useInView } from '../hooks/useInView';
 import SocialIcons from './SocialIcons';
 
 function Layout({ lang, setLang }) {
   const tr = t[lang];
+  const { pathname } = useLocation();
   const [sageBandRef, sageBandInView] = useInView({ threshold: 0.15 });
 
   return (
@@ -38,16 +39,18 @@ function Layout({ lang, setLang }) {
       </nav>
       <Outlet />
       <footer className="site-footer">
-        <div
-          ref={sageBandRef}
-          className={`footer-sage-band${sageBandInView ? ' footer-sage-band--visible' : ''}`}
-        >
-          <div className="footer-sage-inner">
-            <h2 className="footer-sage-heading">{tr.footer_cta_heading}</h2>
-            <p className="footer-sage-body">{tr.footer_cta_body}</p>
-            <Link to="/contact" className="footer-sage-btn">{tr.footer_cta_btn}</Link>
+        {pathname !== '/contact' && (
+          <div
+            ref={sageBandRef}
+            className={`footer-sage-band${sageBandInView ? ' footer-sage-band--visible' : ''}`}
+          >
+            <div className="footer-sage-inner">
+              <h2 className="footer-sage-heading">{tr.footer_cta_heading}</h2>
+              <p className="footer-sage-body">{tr.footer_cta_body}</p>
+              <Link to="/contact" className="footer-sage-btn">{tr.footer_cta_btn}</Link>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="footer-light-bar">
           <div className="footer-wordmark">
