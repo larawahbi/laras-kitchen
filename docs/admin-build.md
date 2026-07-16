@@ -186,3 +186,12 @@ Recorded so it is not quietly picked up.
 - **Pricing.** Deliberately hidden behind a feature flag. The data pipeline and endpoints are intact. Not part of this build.
 - **Nutrition.** The reserved columns on `ingredients` are null. Paused by decision.
 - **Public accounts.** Registration, profiles, saved recipes, reviews. Phase 3 in the roadmap.
+
+---
+
+## Known defects
+
+Found during the mobile Arabic layout diagnosis. Both are dormant — the grocery estimate panel does not render while `SHOW_PRICES` is `false`, so neither can be tested in the current UI. Fixed in the session that re-enables prices, not now.
+
+- **`.grocery-item-name` has no `min-width:0`**, and the grocery row classes (`frontend/src/styles/main.css:236-244`) have no mobile breakpoint at all. At 390px the row overflows the card: the Shop button is pushed past the right edge and the ingredient name column is squeezed to two or three lines while the product name column keeps its space. Identical in both languages — there is no RTL rule for any of these classes.
+- **`RecipeDetail.js:40`** builds `allIngredientItems` from `recipe.ingredients` without checking `lang`, so the grocery panel always shows English ingredient names, even in Arabic mode. The ingredient data itself is complete and correctly translated (checked directly against the database, all 72 `ingredients` rows have a non-empty `name_ar`) — this is a code bug, not a data gap. The main ingredient panel is unaffected; it already reads the lang-aware `ingredients` variable.

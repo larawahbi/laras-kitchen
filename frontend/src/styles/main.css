@@ -23,7 +23,6 @@ body.ar{direction:rtl; text-align:right;
 body.ar .nav-links{flex-direction:row-reverse;}
 body.ar .nav-right{flex-direction:row-reverse;}
 body.ar .hero-stats{left:clamp(20px,5vw,60px);right:auto;}
-body.ar .recipe-layout{flex-direction:row-reverse;}
 body.ar .back-btn svg{transform:scaleX(-1);}
 body.ar .cook-overlay-back svg{transform:scaleX(-1);}
 body.ar .ai-panel{right:auto;left:28px;transform-origin:bottom left;}
@@ -492,6 +491,9 @@ body.ar .loading-phrase{font-family:'Amiri',serif;}
   body.ar .footer-light-bar{flex-direction:column;}
   .footer-strip{flex-direction:column;align-items:center;text-align:center;gap:4px;}
   body.ar .footer-strip{flex-direction:column;}
+}
+@media(min-width:769px){
+  body.ar .recipe-layout{flex-direction:row-reverse;}
 }
 
 @keyframes pageFadeIn{from{opacity:0;}to{opacity:1;}}
